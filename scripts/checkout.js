@@ -3,6 +3,9 @@
 // 1. import product.js 
 // 2. loop through the products.js and find the matching id
 //2. match the ids of product from cart and in products
+
+//when clicking on radio button it if the name is same in the buttons then it will slect one from those all buttons so to differentiate the selection for each product  we have to give different name using id
+// means each product radio buttons select only the option given in that product
 import { cart } from '../data/cart.js';
 import { products } from '../data/products.js';
 import { moneyConversion } from './utils/money.js';
@@ -59,7 +62,7 @@ cartHtml+=
             <div class="delivery-option">
                 <input type="radio" checked
                 class="delivery-option-input"
-                name="delivery-option-1">
+                name="delivery-option-${matchingCartItem.id}"> 
                 <div>
                 <div class="delivery-option-date">
                     Tuesday, June 21
@@ -72,7 +75,7 @@ cartHtml+=
             <div class="delivery-option">
                 <input type="radio"
                 class="delivery-option-input"
-                name="delivery-option-1">
+                name="delivery-option-${matchingCartItem.id}">
                 <div>
                 <div class="delivery-option-date">
                     Wednesday, June 15
@@ -85,7 +88,7 @@ cartHtml+=
             <div class="delivery-option">
                 <input type="radio"
                 class="delivery-option-input"
-                name="delivery-option-1">
+                name="delivery-option-${matchingCartItem.id}">
                 <div>
                 <div class="delivery-option-date">
                     Monday, June 13
