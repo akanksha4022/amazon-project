@@ -5,6 +5,7 @@
 //2. match the ids of product from cart and in products
 import { cart } from '../data/cart.js';
 import { products } from '../data/products.js';
+import { moneyConversion } from './utils/money.js';
 
 let cartHtml = '';
 
@@ -36,7 +37,7 @@ cartHtml+=
                 ${matchingCartItem.name}
             </div>
             <div class="product-price">
-                $${matchingCartItem.priceCents/100}
+                $${moneyConversion(matchingCartItem.priceCents)}
             </div>
             <div class="product-quantity">
                 <span>

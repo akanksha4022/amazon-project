@@ -25,7 +25,7 @@ products.forEach((item)=>{
           </div>
 
           <div class="product-price">
-            $${(item.priceCents/100).toFixed(2)}
+            $${moneyConversion(item.priceCents)}
           </div>
 
           <div class="product-quantity-container">
