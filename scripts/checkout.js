@@ -6,7 +6,7 @@
 
 //when clicking on radio button it if the name is same in the buttons then it will slect one from those all buttons so to differentiate the selection for each product  we have to give different name using id
 // means each product radio buttons select only the option given in that product
-import { cart } from '../data/cart.js';
+import { cart, removeFromCart } from '../data/cart.js';
 import { products } from '../data/products.js';
 import { moneyConversion } from './utils/money.js';
 
@@ -22,11 +22,11 @@ cart.forEach((cartItem)=>{
         }
         
     })
-    console.log(matchingCartItem);
+    //console.log(matchingCartItem);
     
 cartHtml+=   
  `
-    <div class="cart-item-container">
+    <div class="cart-item-container js-cart-item-container-${matchingCartItem.id}">
         <div class="delivery-date">
             Delivery date: Tuesday, June 21
         </div>
@@ -49,7 +49,7 @@ cartHtml+=
                 <span class="update-quantity-link link-primary">
                 Update
                 </span>
-                <span class="delete-quantity-link link-primary">
+                <span class="delete-quantity-link link-primary js-delete-link" data-product-id = ${matchingCartItem.id}>
                 Delete
                 </span>
             </div>
@@ -104,5 +104,19 @@ cartHtml+=
     `
    
 });
-console.log(cartHtml);
+//console.log(cartHtml);
  document.querySelector('.js-order-summary').innerHTML = cartHtml;
+
+ // to delete the product whrn we click delete
+ //function is in cart.js
+document.querySelectorAll('.js-delete-link').forEach((link)=>{
+    link.addEventListener('click', ()=>{
+        let productId = link.dataset.productId;        
+        removeFromCart(productId);
+
+       const container = document.querySelector(`.js-cart-item-container-${productId}`)
+       container.remove();        
+
+
+    })
+})

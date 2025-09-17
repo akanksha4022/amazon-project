@@ -1,6 +1,6 @@
 // we will store the product in the cart but we will add only id and  quantity rest of the info will bbe searched from product.js as it will reduce code duplication also called as normalize the data.
 //wewill create dummy data for showing initial blocks of products
-export const cart = [
+export let cart = [
     {
         productId : "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
         quantity : 2
@@ -31,3 +31,20 @@ export function addToCart(productId, selectedQuantity){
       })
   }
 }
+
+// to delte the product 
+// 1. create a new array
+//2. loop through the product in cart and which id matches the delte id dont add in new array
+
+export function removeFromCart(productId) {
+    let newCart = [];
+
+    cart.forEach((cartItem) => {
+        if (cartItem.productId !== productId) {
+            newCart.push(cartItem);  // keep items that don’t match
+        }
+    });
+
+    cart = newCart;
+}
+
