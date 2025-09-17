@@ -72,7 +72,7 @@ document.querySelector(".js-product-grid").innerHTML = productHtml;
 //2. if in the cart increase the quantity 
 //3. if not push in the cart
 
-
+// not included in cart.js becoz it changes the homepage cardquantity
 function updateCartQuantity(){
   let cartQuantity = 0;
   cart.forEach((product)=>{
