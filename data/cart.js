@@ -1,18 +1,26 @@
 // we will store the product in the cart but we will add only id and  quantity rest of the info will bbe searched from product.js as it will reduce code duplication also called as normalize the data.
 //wewill create dummy data for showing initial blocks of products
-export let cart = [
-    {
-        productId : "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
-        quantity : 2
-    },
-    {
-        productId : "15b6fc6f-327a-4ec4-896f-486349e85a3d",
-        quantity : 1
-    },{
-        productId : "83d4ca15-0f35-48f5-b7a3-1ea210004f2e",
-        quantity : 3
-    }   
-];
+export let cart = 
+JSON.parse(localStorage.getItem('cart'));
+if(cart ===null){
+    cart = [
+            {
+                productId : "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
+                quantity : 2
+            },
+            {
+                productId : "15b6fc6f-327a-4ec4-896f-486349e85a3d",
+                quantity : 1
+            },{
+                productId : "83d4ca15-0f35-48f5-b7a3-1ea210004f2e",
+                quantity : 3
+            }   
+        ];
+}
+
+function saveToStorage(){
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
 //now we will generate the html in checkout.js
 
 export function addToCart(productId, selectedQuantity){
@@ -30,6 +38,7 @@ export function addToCart(productId, selectedQuantity){
       quantity: selectedQuantity
       })
   }
+  saveToStorage();
 }
 
 // to delte the product 
@@ -46,5 +55,6 @@ export function removeFromCart(productId) {
     });
 
     cart = newCart;
+    saveToStorage();
 }
 
