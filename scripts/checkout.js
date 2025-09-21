@@ -6,7 +6,7 @@
 
 //when clicking on radio button it if the name is same in the buttons then it will slect one from those all buttons so to differentiate the selection for each product  we have to give different name using id
 // means each product radio buttons select only the option given in that product
-import { cart, removeFromCart } from '../data/cart.js';
+import { cart, removeFromCart, updateDeliveryOptions } from '../data/cart.js';
 import { products } from '../data/products.js';
 import { moneyConversion } from './utils/money.js';
 import {hello} from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js'; // loaded using esm a type of js called ecmascript
@@ -115,7 +115,11 @@ function deliveryOptionsHTML(matchingCartItem,cartItem){
         const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
 
         deliveryHtml +=    `
-                <div class="delivery-option">
+                <div class="delivery-option js-delivery-option" 
+                    data-product-id = "${matchingCartItem.id}" 
+                    data-delivery-option-id ="${deliveryOption.id}"
+
+                >
                     <input type="radio" ${isChecked ?'checked' : ""}
                     class="delivery-option-input"
                     name="delivery-option-${matchingCartItem.id}"> 
@@ -148,5 +152,12 @@ document.querySelectorAll('.js-delete-link').forEach((link)=>{
        container.remove();        
 
 
+    })
+})
+
+document.querySelectorAll('.js-delivery-option').forEach((element)=>{
+    element.addEventListener('click',()=>{
+        const {productId, deliveryOptionId} = element.dataset;
+        updateDeliveryOptions(productId, deliveryOptionId);
     })
 })

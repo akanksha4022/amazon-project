@@ -65,3 +65,20 @@ export function removeFromCart(productId) {
     saveToStorage();
 }
 
+//now when we update radio otions it should be seen in cart so we have to update delivery options in cart too
+//steps
+//1. loop through the cart and findmat the product
+//2. change deliveryoption id
+export function updateDeliveryOptions(productId, deliveryOptionId){
+  
+    let matchingProduct;
+    cart.forEach((product)=>{
+      if(productId === product.productId){
+        matchingProduct = product;
+      }
+    })
+    matchingProduct.deliveryOptionId = deliveryOptionId;
+    saveToStorage();
+  
+}
+
