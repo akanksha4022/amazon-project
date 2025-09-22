@@ -10,16 +10,23 @@ import { moneyConversion } from "../utils/money.js";
 export function renderPaymentSummary(){
     let productPrice =0;
     let shippingPrice = 0;
+    let cartQuantity = 0;
     cart.forEach((cartItem)=>{        
         let product = getProduct(cartItem.productId);
         productPrice += product.priceCents * cartItem.quantity;
         
         let deliveryOption =  getDeliveryShipping(cartItem.deliveryOptionId);
         shippingPrice += deliveryOption.priceCents;
+
+        cartQuantity += cartItem.quantity
     })
     let totalPriceBeforeTax = productPrice + shippingPrice;
     let tax = totalPriceBeforeTax * 0.1; //10 percent tax
     let totalPrice = totalPriceBeforeTax + tax;
+
+    console.log(cartQuantity);
+
+   
 
     let paymentHtml = 
     `
@@ -28,7 +35,7 @@ export function renderPaymentSummary(){
           </div>
 
           <div class="payment-summary-row">
-            <div>Items (3):</div>
+            <div>Items (${cartQuantity}):</div>
             <div class="payment-summary-money">$${moneyConversion(productPrice)}</div>
           </div>
 

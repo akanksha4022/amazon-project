@@ -13,6 +13,7 @@ import {hello} from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js'; // lo
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 import { deliveryOptions, getDeliveryShipping } from '../../data/deliveryOptions.js';
 import { renderPaymentSummary } from './paymentsummary.js';
+import { renderCheckoutHeader } from './checkoutHeader.js';
 
 //we import function or code from external libraray 
 //to show date
@@ -142,8 +143,8 @@ export function renderOrderSummary(){
             let productId = link.dataset.productId;        
             removeFromCart(productId);
 
-            const container = document.querySelector(`.js-cart-item-container-${productId}`)
-            container.remove();            
+            renderCheckoutHeader();
+            renderOrderSummary();            
             renderPaymentSummary();
 
         })
