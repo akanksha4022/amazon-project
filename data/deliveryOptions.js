@@ -1,4 +1,13 @@
 //as addding in cart the delivery option get trpetitive so we will vreate delivery option id hrer there are three types of delivery option
+export function getDeliveryShipping(deliveryOptionId){
+    let deliveryOption;
+    deliveryOptions.forEach((option)=>{
+        if(option.id === deliveryOptionId){
+            deliveryOption = option;
+        }
+    });
+    return deliveryOption || deliveryOptions[0] ;
+}
 
 export const deliveryOptions = [{
     id : '1',

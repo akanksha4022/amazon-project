@@ -3,6 +3,10 @@
 //
 
 //wewill create dummy data for showing initial blocks of products
+
+//created function to find product using productid
+
+
 export let cart = 
 JSON.parse(localStorage.getItem('cart'));
 if(cart === null){
@@ -16,11 +20,7 @@ if(cart === null){
                 productId : "15b6fc6f-327a-4ec4-896f-486349e85a3d",
                 quantity : 1,
                 deliveryOptionId : '2'
-            },{
-                productId : "83d4ca15-0f35-48f5-b7a3-1ea210004f2e",
-                quantity : 3,
-                deliveryOptionId : '3'
-            }   
+            }
         ];
 }
 
