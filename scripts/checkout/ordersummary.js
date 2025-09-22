@@ -12,6 +12,7 @@ import { moneyConversion } from '../utils/money.js';
 import {hello} from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js'; // loaded using esm a type of js called ecmascript
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 import { deliveryOptions, getDeliveryShipping } from '../../data/deliveryOptions.js';
+import { renderPaymentSummary } from './paymentsummary.js';
 
 //we import function or code from external libraray 
 //to show date
@@ -141,9 +142,9 @@ export function renderOrderSummary(){
             let productId = link.dataset.productId;        
             removeFromCart(productId);
 
-        const container = document.querySelector(`.js-cart-item-container-${productId}`)
-        container.remove();        
-
+            const container = document.querySelector(`.js-cart-item-container-${productId}`)
+            container.remove();            
+            renderPaymentSummary();
 
         })
     })
@@ -153,6 +154,7 @@ export function renderOrderSummary(){
             const {productId, deliveryOptionId} = element.dataset;
             updateDeliveryOptions(productId, deliveryOptionId); 
             renderOrderSummary();
+            renderPaymentSummary();
         })
     })
 
