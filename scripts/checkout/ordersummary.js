@@ -11,7 +11,7 @@ import { products, getProduct } from '../../data/products.js';
 import { moneyConversion } from '../utils/money.js';
 import {hello} from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js'; // loaded using esm a type of js called ecmascript
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
-import { deliveryOptions, getDeliveryShipping } from '../../data/deliveryOptions.js';
+import { deliveryOptions, getDeliveryShipping, calculateDeliveryDate } from '../../data/deliveryOptions.js';
 import { renderPaymentSummary } from './paymentsummary.js';
 import { renderCheckoutHeader } from './checkoutHeader.js';
 
@@ -41,13 +41,13 @@ export function renderOrderSummary(){
         // to change the main delivery date html find the deliveryoptionid from cart and access delivery option then use datejs to get the choosed date fron the data in deliveryoptions 
         const deliveryOptionId = cartItem.deliveryOptionId;
 
-        let deliveryOption = getDeliveryShipping(deliveryOptionId);
-               
+        let deliveryOption = getDeliveryShipping(deliveryOptionId);               
 
         const today = dayjs();
-        const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');// plus 7 days
 
-        let deliveryFormatDate = deliveryDate.format('dddd, MMMM D');
+        let deliveryFormatDate = calculateDeliveryDate(today, deliveryOption);
+
+        
         
     cartHtml+=   
     `
@@ -100,10 +100,9 @@ export function renderOrderSummary(){
         let deliveryHtml = '';
         const today = dayjs();
         deliveryOptions.forEach((deliveryOption)=>{
-            
-            const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');// plus 7 days
 
-            let formatDate = deliveryDate.format('dddd, MMMM D'); //format
+            let formatDate= calculateDeliveryDate(today, deliveryOption); 
+            
 
             const priceString = deliveryOption.priceCents===0 ? "FREE" : `$${moneyConversion(deliveryOption.priceCents)}`;
             // to see check in seclected delivery option mainly to update html

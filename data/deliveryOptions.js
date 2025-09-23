@@ -9,6 +9,13 @@ export function getDeliveryShipping(deliveryOptionId){
     return deliveryOption || deliveryOptions[0] ;
 }
 
+export function calculateDeliveryDate(today, deliveryOption){
+    const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');// plus 7 days
+
+    let deliveryFormatDate = deliveryDate.format('dddd, MMMM D');
+    return deliveryFormatDate;
+}
+
 export const deliveryOptions = [{
     id : '1',
     deliveryDays: 7,
