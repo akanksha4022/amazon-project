@@ -85,8 +85,7 @@ function updateCartQuantity(){
   document.querySelector('.cart-quantity').innerHTML = cartQuantity;
 }
 
-document.querySelectorAll(".js-add-to-cart").forEach((button)=>{
-  
+document.querySelectorAll(".js-add-to-cart").forEach((button)=>{  
 
   button.addEventListener("click",()=>{
 
@@ -95,11 +94,8 @@ document.querySelectorAll(".js-add-to-cart").forEach((button)=>{
   addToCart(productId, selectedQuantity)
 
   
-  // to show cartquantity 
-  
-
-  updateCartQuantity();
-  
+  // to show cartquantity
+  updateCartQuantity();  
 
   })
 });
