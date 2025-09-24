@@ -31,7 +31,6 @@ import { renderCheckoutHeader } from './checkoutHeader.js';
 
 export function renderOrderSummary(){
 
-
     let cartHtml = '';
 
     cart.forEach((cartItem)=>{
@@ -51,7 +50,9 @@ export function renderOrderSummary(){
         
     cartHtml+=   
     `
-        <div class="cart-item-container js-cart-item-container-${matchingCartItem.id}">
+        <div class="cart-item-container 
+        js-cart-item-container
+        js-cart-item-container-${matchingCartItem.id}">
             <div class="delivery-date">
                 Delivery date: ${deliveryFormatDate}
             </div>
@@ -67,14 +68,14 @@ export function renderOrderSummary(){
                 <div class="product-price">
                     $${moneyConversion(matchingCartItem.priceCents)}
                 </div>
-                <div class="product-quantity">
+                <div class="product-quantity js-product-quantity-${matchingCartItem.id}">
                     <span>
                     Quantity: <span class="quantity-label">${cartItem.quantity}</span>
                     </span>
                     <span class="update-quantity-link link-primary">
                     Update
                     </span>
-                    <span class="delete-quantity-link link-primary js-delete-link" data-product-id = ${matchingCartItem.id}>
+                    <span class="delete-quantity-link link-primary js-delete-link js-delete-link-${matchingCartItem.id}" data-product-id = ${matchingCartItem.id}>
                     Delete
                     </span>
                 </div>
