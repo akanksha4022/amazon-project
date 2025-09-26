@@ -101,8 +101,7 @@ const businessCart = new Cart('businessCart');
 
 // businessCart.addToCart('8c9c52b5-5a19-4bcb-a5d1-158a74287c53',1);
 
-console.log(businessCart);
-console.log(cart);
+
 
 
 
