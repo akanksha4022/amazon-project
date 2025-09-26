@@ -1,6 +1,8 @@
 //here oop code will be written means in object
 // we us this becoz if object change then it should not affect the methods and property
-//oop tries to replicate real world object so in real world there can be two carts in order to do that we have to coly paste again so to avoid repetation we will use classm function
+//oop tries to replicate real world object so in real world there can be two carts in order to do that we have to coly paste again so to avoid repetation we will use function
+
+// now we use class which is also called object generator
 
 function Cart(localStorageKey){
     const cart = {
