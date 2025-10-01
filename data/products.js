@@ -31,6 +31,29 @@ class Product{
   getPrice(){
     return `$${moneyConversion(this.priceCents)}`;
   }
+
+  extraInfoHTML(){
+    return '';
+  }
+}
+// inheritance as some product needs extra properties like cloth needs size chart so we created a class clothing which extends the Product class
+
+//one class is a more specific type of another class
+
+//inheritance helps to resuse code
+class Clothing extends Product{
+  sizeChartLink;
+
+  constructor(productDetails){
+    super(productDetails); // as we want all the peroperties from above class we have to write all the code again so to call above constructor here we can use super function
+    this.sizeChartLink = productDetails.sizeChartLink;
+  }
+
+  extraInfoHTML(){
+    return `
+      <a href="${this.sizeChartLink}" target="_blank">Size Chart</a>
+    `;
+  }
 }
 
 
@@ -695,6 +718,9 @@ export const products = [
     ]
   }
 ].map((productDetail)=>{
+  if(productDetail.type === 'clothing'){
+    return new Clothing(productDetail)
+;  }
   return new Product(productDetail);
 })
 
