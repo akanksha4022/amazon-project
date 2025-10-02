@@ -1,25 +1,17 @@
 import { renderOrderSummary } from "./checkout/ordersummary.js";
 import { renderPaymentSummary } from "./checkout/paymentsummary.js";
 import { renderCheckoutHeader } from "./checkout/checkoutHeader.js";
-import { loadProducts } from "../data/products.js";
+import { loadProducts, loadProductsFetch } from "../data/products.js";
 
 import { loadCart } from "../data/cart.js";
 
 //import '../data/cart-oop.js';
 import '../data/cart-class.js';
-
 //import './backend-practice.js';
 
 // with promise all
 Promise.all([
-    new Promise((resolve)=>{
-        console.log("srt promise");
-        loadProducts(()=>{
-            console.log('finished loading products')
-            resolve('richman');
-            
-        });
-    }),
+    loadProductsFetch(),
 
     new Promise((resolve)=>{
         console.log("second promise")
