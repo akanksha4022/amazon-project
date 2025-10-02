@@ -9,24 +9,46 @@ import { loadCart } from "../data/cart.js";
 import '../data/cart-class.js';
 //import './backend-practice.js';
 
+//make code more cleaner
+async function loadPage(){
+    
+    await loadProductsFetch(); //let us write ansync code like normal code
+
+    await new Promise((resolve)=>{        
+        loadCart(()=>{            
+            resolve();
+        })
+    });
+
+    renderCheckoutHeader();
+    renderOrderSummary();
+    renderPaymentSummary();
+
+}
+
+loadPage()
+
+
+
+
 // with promise all
-Promise.all([
+/* Promise.all([
     loadProductsFetch(),
 
     new Promise((resolve)=>{
-        console.log("second promise")
+        //console.log("second promise")
         loadCart(()=>{
-            console.log('cart loading finish')
+            //console.log('cart loading finish')
             resolve();
         })
     })
 ]).then((value)=>{
-        console.log(value)
+        //console.log(value)
         renderCheckoutHeader();
         renderOrderSummary();
         renderPaymentSummary();
-        console.log('over');
-})
+        //console.log('over');
+})*/
 
 //normally without promise all 
 // new Promise((resolve)=>{
