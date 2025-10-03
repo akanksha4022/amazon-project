@@ -11,14 +11,22 @@ import '../data/cart-class.js';
 
 //make code more cleaner
 async function loadPage(){
-    
-    await loadProductsFetch(); //let us write ansync code like normal code
+    try{
+        //throw 'error 1';
 
-    await new Promise((resolve)=>{        
-        loadCart(()=>{            
-            resolve();
-        })
-    });
+        await loadProductsFetch(); //let us write ansync code like normal code
+
+        await new Promise((resolve,reject)=>{   
+            //throw 'error2'     
+            loadCart(()=>{     
+                //reject('error2');       
+                resolve();
+            })
+        });
+
+    }catch(error){
+        console.log("async await error handling");
+    }
 
     renderCheckoutHeader();
     renderOrderSummary();
