@@ -6,12 +6,7 @@ The project features product listings, a shopping cart, checkout, and order trac
 
 ---
 
-## 📸 Preview
 
-![Project Preview](./images/preview.png)  
-*(Add a screenshot of your homepage here)*
-
----
 
 ## 🚀 Features
 
@@ -92,30 +87,30 @@ amazon-project/
 
 ## 🌟 Future Enhancements
 
-- 🔐 User Authentication (Login / Signup)  
-- 💾 Persist Cart & Orders with LocalStorage or Backend  
-- 🧠 Add Search, Filters, and Recommendations  
-- 🖼️ Improve UI with animations and better responsiveness  
-- 🌐 Integrate with a real backend using Node.js / Express
+-  User Authentication (Login / Signup)  
+-  Persist Cart & Orders with LocalStorage or Backend  
+-  Add Search, Filters, and Recommendations  
+-  Improve UI with animations and better responsiveness  
+- Integrate with a real backend using Node.js / Express
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions are welcome!  
 If you'd like to improve this project, feel free to **fork the repo**, make changes, and submit a **pull request**.
 
 ---
 
-## 📄 License
+##  License
 
 This project is licensed under the **MIT License**.
 
 ---
 
-## ✨ Author
+##  Author
 
-👩‍💻 **Akanksha Singh**  
+ **Akanksha Singh**  
 📌 [GitHub](https://github.com/akanksha4022) | [LinkedIn](#)(http://www.linkedin.com/in/akanksha-singh-b7986b24a)
 
 
