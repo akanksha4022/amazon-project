@@ -3,7 +3,7 @@ import { renderPaymentSummary } from "./checkout/paymentsummary.js";
 import { renderCheckoutHeader } from "./checkout/checkoutHeader.js";
 import { loadProducts, loadProductsFetch } from "../data/products.js";
 
-import { loadCart } from "../data/cart.js";
+import { loadCart, loadCartFetch } from "../data/cart.js";
 
 //import '../data/cart-oop.js';
 import '../data/cart-class.js';
@@ -13,16 +13,21 @@ import '../data/cart-class.js';
 async function loadPage(){
     try{
         //throw 'error 1';
+        await Promise.all([
+            loadProductsFetch(),
+            loadCartFetch()
+        ])
+         //let us write ansync code like normal code
 
-        await loadProductsFetch(); //let us write ansync code like normal code
+        // await new Promise((resolve,reject)=>{   
+        //     //throw 'error2'     
+        //     loadCart(()=>{     
+        //         //reject('error2');       
+        //         resolve();
+        //     })
+        // });
 
-        await new Promise((resolve,reject)=>{   
-            //throw 'error2'     
-            loadCart(()=>{     
-                //reject('error2');       
-                resolve();
-            })
-        });
+        
 
     }catch(error){
         console.log("async await error handling");
@@ -34,7 +39,8 @@ async function loadPage(){
 
 }
 
-loadPage()
+loadPage();
+//loadCartFetch();
 
 
 
